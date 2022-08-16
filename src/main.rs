@@ -2,7 +2,7 @@ use std::process;
 
 use clap::Parser;
 use config::Config;
-use dialoguer::{theme::ColorfulTheme, Select};
+use dialoguer::{theme::ColorfulTheme, FuzzySelect};
 use qrcodegen::{QrCode, QrCodeEcc};
 use wgc::WireguardConfig;
 
@@ -30,7 +30,7 @@ fn main() {
             .map(|s| s.node.clone())
             .collect::<Vec<_>>();
 
-        let id = Select::with_theme(&ColorfulTheme::default())
+        let id = FuzzySelect::with_theme(&ColorfulTheme::default())
             .with_prompt("Select node to export:")
             .default(0)
             .items(&nodes)
