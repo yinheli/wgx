@@ -1,0 +1,62 @@
+# range: 10.18.0.1 - 10.18.1.254
+network: "10.18.0.0/23"
+mtu: 1420
+
+servers:
+  - node: "home-gateway"
+    address: "10.18.0.1"
+    listenPort: 52000
+    publicAddress: "home.example.com:52000"
+    privateKey: "oD3F5JxAJwBRW2lA3j43PWtP2/FX/gcpyHOWXAlSU00="
+    routes:
+      - via: "lab-1"
+        routes:
+          - "10.25.0.0/16"
+          - "192.168.4.0/24,192.168.8.0/24"
+      - via: "dev-server-1"
+        routes:
+          - "10.12.2.0/24"
+
+  - node: "lab-1"
+    address: "10.18.0.2"
+    privateKey: "6O0WCSq1uqkD7KCFP8Tn0+HpvfHeiecKNMG8XeD3Emk="
+    routes:
+      - via: "home-gateway"
+        routes:
+          - "10.0.1.0/24"
+      - via: "dev-server-1"
+        # overwrite endpoint
+        endpoint: "192.168.3.90:52000"
+        routes:
+          - "10.12.2.0/24"
+
+  - node: "dev-server-1"
+    address: "10.18.0.3"
+    listenPort: 52000
+    privateKey: "UJ5WZLAM7wYiF2+U725zmUahhOrXZXRnF66FPpKka2s="
+    routes:
+      - via: "home-gateway"
+        routes:
+          - "10.0.1.0/24"
+
+  - node: "android"
+    address: "10.18.0.4"
+    privateKey: "sDGWwlIzwBg8NNVSnB4GooMBVFSA7xRCKOqm/hCJumo="
+    routes:
+      - via: "home-gateway"
+        routes:
+          - "10.0.1.0/24"
+          - "10.25.0.0/16"
+          - "192.168.4.0/24,192.168.8.0/24"
+          - "10.12.2.0/24"
+
+  - node: "macOS"
+    address: "10.18.0.5"
+    privateKey: "wCwOHlbwxIesAEfX6FC2sB6Rwj/Ty0MPyCR0uMefe3U="
+    routes:
+      - via: "home-gateway"
+        routes:
+          - "10.0.1.0/24"
+          - "10.25.0.0/16"
+          - "192.168.4.0/24,192.168.8.0/24"
+          - "10.12.2.0/24"
