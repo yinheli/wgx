@@ -75,15 +75,15 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           cd target/${{ matrix.target }}/release
-          strip dnspod-ddns.exe
-          7z a ../../../${{ matrix.name }} dnspod-ddns.exe
+          strip wgx.exe
+          7z a ../../../${{ matrix.name }} wgx.exe
           cd -
       - name: Post Build | Prepare artifacts [-nix]
         if: matrix.os != 'windows-latest'
         run: |
           cd target/${{ matrix.target }}/release
-          strip dnspod-ddns || true
-          tar czvf ../../../${{ matrix.name }} dnspod-ddns
+          strip wgx || true
+          tar czvf ../../../${{ matrix.name }} wgx
           cd -
       - name: Deploy | Upload artifacts
         uses: actions/upload-artifact@v3

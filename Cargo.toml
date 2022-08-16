@@ -5,7 +5,8 @@ edition = "2021"
 authors = ["yinheli <me@yinheli.com>"]
 keywords = ["wireguard", "toolkit"]
 description = "wireguard tool to manage / generate configuration."
-repository = "https://github.com/yinheli/kungfu"
+repository = "https://github.com/yinheli/wgx"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
