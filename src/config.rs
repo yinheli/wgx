@@ -85,17 +85,17 @@ impl Config {
 
         anyhow::ensure!(
             addrs.len() == self.servers.len(),
-            "each node should have an address"
+            "each node should have an unique address"
         );
 
-        addrs.iter().for_each(|v| {
-            assert!(
-                network.contains(v),
+        for a in addrs.iter() {
+            anyhow::ensure!(
+                network.contains(a),
                 "address {} is not in network {}",
-                v,
+                a,
                 network
             );
-        });
+        }
 
         let private_keys = self
             .servers
