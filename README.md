@@ -4,6 +4,8 @@ wireguard tool to manage / generate configuration. Maintain one yaml configurati
 
 ## Usage
 
+[![asciicast](https://asciinema.org/a/NIP9rpjjlWVIMM6hUl4Q8U4ap.svg)](https://asciinema.org/a/NIP9rpjjlWVIMM6hUl4Q8U4ap)
+
 ```bash
 wgx --h
 
