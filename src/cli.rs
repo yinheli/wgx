@@ -13,7 +13,7 @@ pub struct Cli {
     #[clap(short, long, default_value = "")]
     pub node: String,
 
-    /// Output format
+    /// Output format, conf: wg config file, qr: QR code
     #[clap(short, long, default_value = "conf")]
     pub format: Format,
 

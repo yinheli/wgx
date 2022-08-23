@@ -3,7 +3,6 @@ use std::process;
 use clap::Parser;
 use config::Config;
 use dialoguer::{theme::ColorfulTheme, FuzzySelect};
-use qrcodegen::{QrCode, QrCodeEcc};
 use wgc::WireguardConfig;
 
 mod cli;
@@ -52,21 +51,7 @@ fn main() {
         }
         cli::Format::Qr => {
             let text = cfg.to_string();
-            let qr = QrCode::encode_text(&text, QrCodeEcc::Low).unwrap();
-            print_qr(&qr);
+            qr2term::print_qr(&text).unwrap();
         }
     };
-}
-
-// https://github.com/nayuki/QR-Code-generator/blob/master/rust/examples/qrcodegen-demo.rs
-fn print_qr(qr: &QrCode) {
-    let border: i32 = 2;
-    for y in -border..qr.size() + border {
-        for x in -border..qr.size() + border {
-            let c: char = if qr.get_module(x, y) { '█' } else { ' ' };
-            print!("{0}{0}", c);
-        }
-        println!();
-    }
-    println!();
 }
