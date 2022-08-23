@@ -4,7 +4,8 @@ wireguard tool to manage / generate configuration. Maintain one yaml configurati
 
 ## Usage
 
-[![asciicast](https://asciinema.org/a/HAsSBJUXAefgMpoX6F9QH4ZOW.svg)](https://asciinema.org/a/HAsSBJUXAefgMpoX6F9QH4ZOW)
+![wgx usage demo](./res/demo.svg)
+_No demo visible here? View it on [asciinema](https://asciinema.org/a/515270)._
 
 ```bash
 wgx --h
@@ -22,3 +23,5 @@ OPTIONS:
 ```
 
 more information please checkout [config.example.yml](./config.example.yml)
+
+[usage-demo]: https://asciinema.org/a/515270
