@@ -3,26 +3,26 @@ use std::str::FromStr;
 use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[clap(version, about)]
+#[command(version, about)]
 pub struct Cli {
     /// Config file
-    #[clap(short, long, value_hint=clap::ValueHint::FilePath, default_value="./config.yml")]
+    #[arg(short, long, value_hint=clap::ValueHint::FilePath, default_value="./config.yml")]
     pub config: String,
 
     /// Node to export
-    #[clap(short, long, default_value = "")]
+    #[arg(short, long, default_value = "")]
     pub node: String,
 
     /// Output format, conf: wg config file, qr: QR code
-    #[clap(short, long, default_value = "conf")]
+    #[arg(short, long, default_value = "conf")]
     pub format: Format,
 
     /// Include all nodes
-    #[clap(short, long)]
+    #[arg(short, long)]
     pub all: bool,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Format {
     Conf,
     Qr,
