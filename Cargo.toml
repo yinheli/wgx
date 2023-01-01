@@ -18,7 +18,7 @@ serde = { version = "1", features = ["rc"] }
 serde_derive = "1"
 serde_yaml = "0.9"
 tera = "1.17.0"
-base64 = "0.13"
+base64 = "0.20"
 x25519-dalek = "1"
 rand_core = "0.6"
 dialoguer = { version = "0.10", features = ["fuzzy-select"] }
