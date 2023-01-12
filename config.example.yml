@@ -6,6 +6,7 @@ servers:
   - node: "home-gateway"
     address: "10.18.0.1"
     listenPort: 52000
+    dns: 1.1.1.1,8.8.8.8
     publicAddress: "home.example.com:52000"
     privateKey: "oD3F5JxAJwBRW2lA3j43PWtP2/FX/gcpyHOWXAlSU00="
     routes:

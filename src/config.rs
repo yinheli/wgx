@@ -3,6 +3,7 @@ use std::fs;
 use std::net::IpAddr;
 use std::str::FromStr;
 
+use base64::{engine::general_purpose, Engine as _};
 use ipnet::IpNet;
 use serde_derive::Deserialize;
 use serde_derive::Serialize;
@@ -30,6 +31,7 @@ pub struct Server {
     #[serde(skip_serializing, skip_deserializing)]
     pub network: String,
     pub listen_port: Option<u16>,
+    pub dns: Option<String>,
     pub private_key: String,
     #[serde(skip_serializing, skip_deserializing)]
     pub public_key: String,
@@ -62,10 +64,14 @@ impl Config {
         config.servers.iter_mut().for_each(|s| {
             s.network = format!("{}/{}", s.address, network.prefix_len());
 
-            let private_key: [u8; 32] = base64::decode(&s.private_key).unwrap().try_into().unwrap();
+            let private_key: [u8; 32] = general_purpose::STANDARD
+                .decode(&s.private_key)
+                .unwrap()
+                .try_into()
+                .unwrap();
             let private_key = StaticSecret::from(private_key);
             let public_key = PublicKey::from(&private_key);
-            s.public_key = base64::encode(public_key.as_bytes());
+            s.public_key = general_purpose::STANDARD.encode(public_key.as_bytes());
         });
 
         Ok(config)
@@ -135,9 +141,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let config = Config::new("config.yml").unwrap();
+        let config = Config::new("config.example.yml").unwrap();
 
-        let config = WireguardConfig::new(&config, "joy-lab", true);
+        let config = WireguardConfig::new(&config, "home-gateway", true);
         println!("{:?}", config);
     }
 }
