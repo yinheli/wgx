@@ -51,7 +51,7 @@ fn main() {
         }
         cli::Format::Qr => {
             let text = cfg.to_string();
-            qr2term::print_qr(&text).unwrap();
+            qr2term::print_qr(text).unwrap();
         }
     };
 }
