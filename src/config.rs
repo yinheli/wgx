@@ -15,10 +15,10 @@ use x25519_dalek::StaticSecret;
 pub struct Config {
     pub network: String,
     pub mtu: u16,
-    pub pre_up: Option<String>,
-    pub pre_down: Option<String>,
-    pub post_up: Option<String>,
-    pub post_down: Option<String>,
+    pub pre_up: Option<Vec<String>>,
+    pub pre_down: Option<Vec<String>>,
+    pub post_up: Option<Vec<String>>,
+    pub post_down: Option<Vec<String>>,
     pub persistent_keepalive: Option<u16>,
     pub servers: Vec<Server>,
 }
@@ -36,10 +36,10 @@ pub struct Server {
     #[serde(skip_serializing, skip_deserializing)]
     pub public_key: String,
     pub public_address: Option<String>,
-    pub pre_up: Option<String>,
-    pub pre_down: Option<String>,
-    pub post_up: Option<String>,
-    pub post_down: Option<String>,
+    pub pre_up: Option<Vec<String>>,
+    pub pre_down: Option<Vec<String>>,
+    pub post_up: Option<Vec<String>>,
+    pub post_down: Option<Vec<String>>,
     pub persistent_keepalive: Option<u16>,
     pub routes: Option<Vec<Route>>,
 }

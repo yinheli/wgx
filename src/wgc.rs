@@ -51,10 +51,10 @@ pub struct Interface {
     pub dns: Option<String>,
     pub private_key: String,
     pub mtu: u16,
-    pub pre_up: Option<String>,
-    pub pre_down: Option<String>,
-    pub post_up: Option<String>,
-    pub post_down: Option<String>,
+    pub pre_up: Option<Vec<String>>,
+    pub pre_down: Option<Vec<String>>,
+    pub post_up: Option<Vec<String>>,
+    pub post_down: Option<Vec<String>>,
 }
 
 impl Interface {

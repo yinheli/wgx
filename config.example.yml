@@ -9,6 +9,10 @@ servers:
     dns: 1.1.1.1,8.8.8.8
     publicAddress: "home.example.com:52000"
     privateKey: "oD3F5JxAJwBRW2lA3j43PWtP2/FX/gcpyHOWXAlSU00="
+    preUp:
+      - "echo 1"
+      - "echo 2"
+
     routes:
       - via: "lab-1"
         routes:
