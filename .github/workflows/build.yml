@@ -107,7 +107,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup | Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - name: Setup | Checksums
         run: for file in wgx-*/wgx-*; do openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256"; done
