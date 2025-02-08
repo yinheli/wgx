@@ -28,12 +28,6 @@ pub enum Format {
     Qr,
 }
 
-impl Default for Format {
-    fn default() -> Self {
-        Format::Conf
-    }
-}
-
 impl FromStr for Format {
     type Err = anyhow::Error;
 

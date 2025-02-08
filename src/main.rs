@@ -47,7 +47,7 @@ fn main() {
 
     match cli.format {
         cli::Format::Conf => {
-            println!("\n\n{}", cfg.to_string());
+            println!("\n\n{}", cfg);
         }
         cli::Format::Qr => {
             let text = cfg.to_string();

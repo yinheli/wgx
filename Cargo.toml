@@ -1,6 +1,6 @@
 [package]
 name = "wgx"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 authors = ["yinheli <me@yinheli.com>"]
 keywords = ["wireguard", "toolkit"]
@@ -20,7 +20,7 @@ serde_yaml = "0.9"
 tera = "1"
 base64 = "0.22"
 x25519-dalek = { version = "2", features = ["static_secrets"] }
-rand_core = "0.6"
+rand_core = "0"
 dialoguer = { version = "0.11", features = ["fuzzy-select"] }
 qr2term = "0.3"
 
