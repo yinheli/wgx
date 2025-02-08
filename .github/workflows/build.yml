@@ -57,7 +57,7 @@ jobs:
     continue-on-error: true
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup | Rust
         uses: actions-rs/toolchain@v1.0.7
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup | Artifacts
         uses: actions/download-artifact@v4
