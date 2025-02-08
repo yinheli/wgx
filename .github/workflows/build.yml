@@ -89,7 +89,7 @@ jobs:
           tar czvf ../../../${{ matrix.name }} wgx
           cd -
       - name: Deploy | Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: startsWith(github.ref, 'refs/tags/')
         with:
           name: ${{ matrix.name }}

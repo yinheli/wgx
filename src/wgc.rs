@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use serde_derive::Serialize;
 use tera::{Context, Tera};
 
@@ -121,12 +123,12 @@ impl Peer {
     }
 }
 
-impl ToString for WireguardConfig {
-    fn to_string(&self) -> String {
+impl Display for WireguardConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut tera = Tera::default();
         let tp = include_str!("wg.ini");
         let mut context = Context::new();
         context.insert("cfg", &self);
-        tera.render_str(tp, &context).unwrap()
+        write!(f, "{}", tera.render_str(tp, &context).unwrap())
     }
 }
